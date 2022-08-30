@@ -1896,7 +1896,7 @@ You can also look at the Netmiko session_log or debug log for more information.
         pattern: str = "ssword",
         enable_pattern: Optional[str] = None,
         re_flags: int = re.IGNORECASE,
-        normalize: boolean = True
+        normalize: bool = True
     ) -> str:
         """Enter enable mode.
 
