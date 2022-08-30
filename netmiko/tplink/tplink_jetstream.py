@@ -41,6 +41,7 @@ class TPLinkJetStreamBase(CiscoSSHConnection):
         pattern: str = "ssword",
         enable_pattern: Optional[str] = None,
         re_flags: int = re.IGNORECASE,
+        normalize: bool = True
     ) -> str:
         """
         TPLink JetStream requires you to first execute "enable" and then execute "enable-admin".
@@ -52,7 +53,7 @@ class TPLinkJetStreamBase(CiscoSSHConnection):
 
         # If end-user passes in "cmd" execute that using normal process.
         if cmd:
-            return super().enable(cmd=cmd, pattern=pattern, re_flags=re_flags)
+            return super().enable(cmd=cmd, pattern=pattern, re_flags=re_flags, normalize=normalize)
 
         output = ""
         msg = (
