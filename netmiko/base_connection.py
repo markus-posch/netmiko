@@ -1896,6 +1896,7 @@ You can also look at the Netmiko session_log or debug log for more information.
         pattern: str = "ssword",
         enable_pattern: Optional[str] = None,
         re_flags: int = re.IGNORECASE,
+        normalize: boolean = True
     ) -> str:
         """Enter enable mode.
 
@@ -1906,6 +1907,8 @@ You can also look at the Netmiko session_log or debug log for more information.
         :param enable_pattern: pattern indicating you have entered enable mode
 
         :param re_flags: Regular expression flags used in conjunction with pattern
+        
+        :param normalize: Configure if the secret should be normalized
         """
         output = ""
         msg = (
@@ -1931,7 +1934,10 @@ You can also look at the Netmiko session_log or debug log for more information.
                     )
                 # Send the "secret" in response to password pattern
                 if re.search(pattern, output):
-                    self.write_channel(self.normalize_cmd(self.secret))
+                    if(normalize==True):
+                        self.write_channel(self.normalize_cmd(self.secret))
+                    else:
+                        self.write_channel(self.secret+"\r")
                     output += self.read_until_prompt()
 
                 # Search for terminating pattern if defined
