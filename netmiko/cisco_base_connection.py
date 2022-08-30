@@ -20,10 +20,11 @@ class CiscoBaseConnection(BaseConnection):
         pattern: str = "ssword",
         enable_pattern: Optional[str] = None,
         re_flags: int = re.IGNORECASE,
+        normalize: Boolean = True
     ) -> str:
         """Enter enable mode."""
         return super().enable(
-            cmd=cmd, pattern=pattern, enable_pattern=enable_pattern, re_flags=re_flags
+            cmd=cmd, pattern=pattern, enable_pattern=enable_pattern, re_flags=re_flags, normalize=normalize
         )
 
     def exit_enable_mode(self, exit_command: str = "disable") -> str:
