@@ -26,6 +26,7 @@ class NoEnable:
         pattern: str = "",
         enable_pattern: Optional[str] = None,
         re_flags: int = re.IGNORECASE,
+        normalize: boolean = True
     ) -> str:
         return ""
 
