@@ -23,9 +23,10 @@ class YamahaBase(BaseConnection):
         pattern: str = r"Password",
         enable_pattern: Optional[str] = None,
         re_flags: int = re.IGNORECASE,
+        normalize: bool = True
     ) -> str:
         return super().enable(
-            cmd=cmd, pattern=pattern, enable_pattern=enable_pattern, re_flags=re_flags
+            cmd=cmd, pattern=pattern, enable_pattern=enable_pattern, re_flags=re_flags, normalize=normalize
         )
 
     def exit_enable_mode(self, exit_command: str = "exit") -> str:
