@@ -20,7 +20,7 @@ class CiscoBaseConnection(BaseConnection):
         pattern: str = "ssword",
         enable_pattern: Optional[str] = None,
         re_flags: int = re.IGNORECASE,
-        normalize: Boolean = True
+        normalize: bool = True
     ) -> str:
         """Enter enable mode."""
         return super().enable(
